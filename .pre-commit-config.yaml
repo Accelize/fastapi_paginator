@@ -1,0 +1,36 @@
+---
+repos:
+  - repo: local
+    hooks:
+      - id: black
+        name: Black (Formatting)
+        entry: poetry run black . --preview
+        language: system
+        pass_filenames: false
+      - id: mypy
+        name: Mypy (Typing)
+        entry: poetry run mypy --strict .
+        language: system
+        pass_filenames: false
+      - id: flake8
+        name: Flake8 (Quality)
+        entry: poetry run flake8 --docstring-convention google
+        language: system
+        pass_filenames: false
+      - id: radon_cc
+        name: Radon (Cyclomatic complexity)
+        entry: poetry run radon cc -n C fastapi_paginator
+        language: system
+        pass_filenames: false
+        verbose: true
+      - id: radon_mi
+        name: Radon (Maintainability index)
+        entry: poetry run radon mi -n B fastapi_paginator
+        language: system
+        pass_filenames: false
+        verbose: true
+      - id: bandit
+        name: Bandit (Security)
+        entry: poetry run bandit fastapi_paginator -qrs B404,B603
+        language: system
+        pass_filenames: false
