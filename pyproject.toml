@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "fastapi_paginator"
+version = "0.0.0"
+description = "Paginator for FastAPI"
+readme = "README.md"
+authors = ["Accelize"]
+license = "BSD-2-Clause"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Typing :: Typed",
+    "Framework :: FastAPI",
+]
+keywords = ["paginator", "fastapi", "sqlalchemy"]
+repository = "https://github.com/Accelize/fastapi_paginator"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "*"
+databases = "*"
+
+[tool.poetry.dev-dependencies]
+bandit = "*"
+black = "*"
+flake8 = "*"
+flake8-docstrings = "*"
+mypy = "*"
+pre-commit = "*"
+pytest-cov = "*"
+radon = "*"
+yamllint = "*"
+types-setuptools = "*"
+types-sqlalchemy = "*"
+asyncpg-stubs = "*"
+databases = {extras = ["postgresql", "sqlite"], version = "*"}
+httpx = "*"
+webuuid = "*"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--strict-markers",
+    "--cov=fastapi_paginator",
+]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:"
+]
+
+[tool.mypy]
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+implicit_reexport = false
+strict_equality = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
